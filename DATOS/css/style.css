@@ -1,100 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,900&display=swap');
-*{
-    font-family: 'Poppins',cursive;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,900&family=Caveat:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
-body{
-    color: azure;
+
+body {
+    color: white;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #D8BFD8;
+    /* Fondo con degradado animado */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    overflow: hidden;
 }
-.greetings{
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.greetings {
     font-size: 6rem;
     font-weight: 900;
-}
-.greetings > span{
-    animation: glow 2.5s ease-in-out infinite;
-}
-@keyframes glow{
-    0%, 100%{
-        color: #fff;
-        text-shadow: 0 0 12px #fbff00, 0 0 50px #fbff00, 0 0 100px #fbff00;
-    }
-    10%, 90%{
-        color: #696565;
-        text-shadow: none;
-    }
-}
-.greetings > span:nth-child(2){
-    animation-delay: .2s ;
-}
-.greetings > span:nth-child(3){
-    animation-delay: .4s ;
-}
-.greetings > span:nth-child(4){
-    animation-delay: .6s;
-}
-.greetings > span:nth-child(5){
-    animation-delay: .8s;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
 }
 
-.description{
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+.greetings > span {
+    display: inline-block;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    animation: floating 3s ease-in-out infinite;
 }
 
-.button a{
-    text-decoration: none;
-    font-size: 1rem;
-    color: #111;
+/* Retraso para que las letras bailen */
+.greetings > span:nth-child(even) { animation-delay: 0.5s; }
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0); text-shadow: 0 0 10px #fff; }
+    50% { transform: translateY(-15px); text-shadow: 0 0 30px #fbff00; color: #fbff00; }
 }
 
-@media screen and (max-width:574px){
-    .greetings{
-        display: block;
-        font-size: 3rem;
-        font-weight: 500;
-        text-align: center;
-    }
-    .description{
-        font-size: 1rem;
-    }
-    
-    .button a{
-        font-size: .5rem;
-    }
+.description {
+    font-family: 'Caveat', cursive; /* Fuente más romántica tipo mano */
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards 1s;
 }
 
-.description{
-    color: #fbff00;
+@keyframes fadeIn {
+    to { opacity: 1; }
 }
 
-/* Estilo para el botón */
+/* Botón Estilo Moderno */
 .button button {
-    background-color: yellow; /* Fondo amarillo */
-    border: none; /* Sin bordes */
-    padding: 10px 20px; /* Ajusta el relleno según tu preferencia */
-    font-size: 18px; /* Tamaño de fuente */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px); /* Efecto de cristal esmerilado */
+    border: 2px solid white;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
     cursor: pointer;
-    position: relative; /* Necesario para el resplandor */
-    border-radius: 20px; /* Esquinas redondeadas */
-    transition: background-color 0.3s ease-in-out; /* Transición suave para el color de fondo */
-  }
-  
-  /* Estilo para el enlace dentro del botón */
-  .button button a {
-    text-decoration: none; /* Elimina el subrayado del enlace */
-    color: inherit; /* Hereda el color del texto del botón */
-  }
-  
-  /* Efecto de resplandor al pasar el cursor sobre el botón */
-  .button button:hover {
-    background-color: orange; /* Cambia el color de fondo al pasar el mouse a naranja */
-    box-shadow: 0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow; /* Efecto de resplandor amarillo */
-  }
-  
-  
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.button button a {
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.button button:hover {
+    transform: scale(1.1);
+    background: white;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+}
+
+.button button:hover a {
+    color: #e73c7e;
+}
+
+/* Responsivo para móviles */
+@media screen and (max-width: 600px) {
+    .greetings { font-size: 3.5rem; flex-wrap: wrap; justify-content: center; }
+    .description { font-size: 1.5rem; text-align: center; padding: 0 20px; }
+}
